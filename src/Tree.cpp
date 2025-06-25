@@ -1,36 +1,14 @@
-#define Analiza_cxx
-#include "Analiza.h"
-#include <TFile.h>
-#include <TString.h>
+#define Tree_cxx
+#include "Tree.h"
+#include <TH2.h>
+#include <TStyle.h>
+#include <TCanvas.h>
 
-
-// konstruktor
-Analiza::Analiza():Tree(nullptr)
+void Tree::Loop()
 {
-   input_file = nullptr;
-   input_tree = nullptr;
-}
-
-//destruktor
-Analiza::~Analiza()
-{
-    if (input_file) {
-        input_file->Close();
-        delete input_file;
-        input_file = nullptr;
-    }
-}
-
-void Analiza::Loop()
-{
-   TString input_file_name = "/home/public/istrazivacki/TnP_emulate_L1_16_20.root";
-   input_file = new TFile(input_file_name);
-   input_tree = (TTree*)input_file->Get("Ntuplizer/TagAndProbe");
-   Init(input_tree);
-
 //   In a ROOT session, you can do:
-//      root> .L Analiza.C
-//      root> Analiza t
+//      root> .L Tree.C
+//      root> Tree t
 //      root> t.GetEntry(12); // Fill t data members with entry number 12
 //      root> t.Show();       // Show values of entry 12
 //      root> t.Show(16);     // Read and show values of entry 16

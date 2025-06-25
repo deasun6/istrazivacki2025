@@ -1,14 +1,15 @@
 #define Analiza_cpp
+#ifndef ANALIZA_H
+#define ANALIZA_H 
 
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>
-
 #include "Tree.h"
 
 using namespace std;
 
-class Analiza: public Tree
+class Analiza : public Tree
 {
   public:
 
@@ -17,9 +18,12 @@ class Analiza: public Tree
 
   void Loop();
 
+  
+
   private: 
-    Tfile *input_file;
+   TFile *input_file;
    TTree *input_tree;
 
-}
+};
 
+#endif 

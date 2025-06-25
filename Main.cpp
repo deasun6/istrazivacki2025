@@ -7,23 +7,26 @@
 #include <TCanvas.h>
 #include <TFile.h>
 #include <TTree.h>
+#include <vector>
 
+#include "TH1F.h"
 #include "Analiza.h"
 
 using namespace std;
 
 
+
 int main() {
 
-    TString putanja = "/home/public/istrazivacki/";
+    TString putanja ="/home/public/istrazivacki/";
     TString root_16_20 = putanja + "TnP_emulate_L1_16_20.root";
     TString root_16_22 = putanja + "TnP_emulate_L1_16_22.root";
 
     Analiza *analiza = new Analiza();
-    analiza->Loop(root_16_22)
+    analiza->Loop();
     
 
-/*
+    /*
     TH1F *histProbePt = new TH1F("histProbePt", "Probe Electron Pt; p_{T} (GeV); Events", 100, 0, 100);
 
     // pokretanje petlje
@@ -45,6 +48,6 @@ int main() {
     inputFile->Close();
      */
 
-    return 0;
+  return 0;
 }
 

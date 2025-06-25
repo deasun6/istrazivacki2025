@@ -2,16 +2,17 @@
 
 CC = g++ 
 UCFLAGS = -g -O3 -Wall -Wextra
-RUCFLAGS := $(root-config --cflags) -I./include/ -I./usr/include/root/
+RUCFLAGS := $(shell  root-config --cflags) -I./include/ -I./usr/include/root/
 
-LIBS :=  $(root-config --libs) -lTreePlayer -lGpad -lHist -lRIO -lCore -L${ROOFITSYS}/lib/ -lRooFit -lRooFitCore -lGraf -lCling
-GLIBS := $(root-config --glibs)
+LIBS :=  $(shell  root-config --libs) -lTreePlayer -lGpad -lHist -lRIO -lCore -L${ROOFITSYS}/lib/ -lRooFit -lRooFitCore -lGraf -lCling
+GLIBS := $(shell root-config --glibs)
 
 
 VPATH = ./src/
 
 SRC = Main.cpp\
       Analiza.cpp\
+	  Tree.cpp
 
 
 INCLUDES = Analiza.h\
