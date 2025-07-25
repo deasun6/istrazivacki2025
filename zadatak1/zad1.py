@@ -3,27 +3,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
-# Putanja do ROOT fajla (relativna do trenutnog foldera zadatak1)
+# put do ROOTa
 root_file_path = "../TnP_emulate_L1_16_22.root"
-
-# Otvaranje fajla i stabla
 file = uproot.open(root_file_path)
 tree = file["Ntuplizer"]["TagAndProbe"]
-
-# Čitanje podataka kao numpy arrays
 arrays = tree.arrays(["eleProbePt", "l1tPt"])
 eleProbePt = arrays["eleProbePt"]
 l1tPt = arrays["l1tPt"]
-
-# Funkcija za Gaussovu raspodjelu
 def gauss(x, A, mu, sigma):
     return A * np.exp(-(x - mu)**2 / (2 * sigma**2))
 
-# Funkcija za izračun FWHM iz sigma
+# fja za FWHM iz sigma
 def fwhm_from_sigma(sigma):
     return 2.355 * sigma
 
-# Bins za eleProbePt intervale
 pt_bins = [5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 100]
 
 peak_positions = []
@@ -65,7 +58,6 @@ for i in range(len(pt_bins) - 1):
     plt.savefig(f"hist_ratio_{low}_{high}.png")
     plt.close()
 
-# Crtanje pozicija peakova za energy scale
 pt_centers, peaks = zip(*peak_positions)
 
 plt.figure(figsize=(8, 6))
